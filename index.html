@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="3d-demo">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <title>Angular 2 3D Demo</title>
+
+    <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<div>
+    <modifier></modifier>
+    <div id="container"></div>
+</div>
+
+<script src="node_modules/es6-shim/es6-shim.min.js"></script>
+<script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+
+<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+<script src="node_modules/systemjs/dist/system.src.js"></script>
+<script src="node_modules/rxjs/bundles/Rx.js"></script>
+<script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+
+<script src="vendor/tween.js"></script>
+<script src="vendor/three.js"></script>
+<script src="vendor/TrackballControls.js"></script>
+<script src="vendor/touchpolyfill.js"></script>
+<script src="vendor/stats.js"></script>
+
+<script>
+    System.config({
+        packages: {
+            app: {
+                format: 'register',
+                defaultExtension: 'js'
+            }
+        }
+    });
+    System.import('app/boot')
+            .then(null, console.error.bind(console));
+</script>
+</body>
+</html>
