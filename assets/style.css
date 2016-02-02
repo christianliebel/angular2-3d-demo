@@ -1,0 +1,21 @@
+body {
+	margin: 0;
+	font-family: "Helvetica Neue", "Segoe WP", Roboto, Helvetica, sans-serif;
+	background: black;
+	color: white;
+    user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+	overflow: hidden;
+}
+
+#modifier {
+	height: 90px;
+	margin: 10px;
+}
+
+#stats {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
