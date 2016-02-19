@@ -1,7 +1,7 @@
+///<reference path="../node_modules/angular2/typings/browser.d.ts" />
+
 import {bootstrap} from 'angular2/platform/browser';
 import {ModifierComponent} from './components/modifierComponent';
-import {RenderService} from './services/renderService';
+import 'rxjs/Rx';
 
-const APP_PROVIDERS = [RenderService];
-
-bootstrap(ModifierComponent, [APP_PROVIDERS]);
+bootstrap(ModifierComponent, []);

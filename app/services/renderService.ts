@@ -24,8 +24,8 @@ export class RenderService {
         this.stats = new Stats();
         document.body.appendChild(this.stats.domElement);
 
-        let width = window.innerWidth;
-        let height = window.innerHeight - 90;
+        const width = window.innerWidth;
+        const height = window.innerHeight - 90;
 
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(45, width/height);
@@ -36,12 +36,12 @@ export class RenderService {
         this.renderer.setSize(width, height);
         this.renderer.setClearColor(0x000000);
 
-        let container = document.getElementById('container');
+        const container = document.getElementById('container');
         container.appendChild(this.renderer.domElement);
         this.controls = new THREE.TrackballControls(this.camera, container);
 
         // Sphere
-        let textureLoader = new THREE.TextureLoader();
+        const textureLoader = new THREE.TextureLoader();
         textureLoader.load('assets/earth.jpg', t => {
             let geometry = new THREE.SphereGeometry(5, 50, 50);
             let material = new THREE.MeshLambertMaterial({map: t});
@@ -51,17 +51,17 @@ export class RenderService {
         });
 
         // Lights
-        let ambientLight = new THREE.AmbientLight(0xcccccc);
+        const ambientLight = new THREE.AmbientLight(0xcccccc);
         this.scene.add(ambientLight);
 
-        let pointLight = new THREE.PointLight(0xffffff);
+        const pointLight = new THREE.PointLight(0xffffff);
         pointLight.position.set(300, 0, 300);
         this.scene.add(pointLight);
     }
 
     public addStars(starsCount: number) {
-        let stars = new THREE.Geometry();
-        let starMaterial = new THREE.PointCloudMaterial({color: 0xffffff});
+        const stars = new THREE.Geometry();
+        const starMaterial = new THREE.PointCloudMaterial({color: 0xffffff});
 
         for (let i = 0; i < starsCount; i++) {
             let x = Math.random() * 2000 - 1000;
@@ -78,7 +78,7 @@ export class RenderService {
     }
 
     public updateScale(newScale: number) {
-        let that = this;
+        const that = this;
         new TWEEN.Tween({scale: this.sphere.scale.x})
             .to({scale: newScale}, 1000)
             .easing(TWEEN.Easing.Elastic.InOut)
@@ -99,8 +99,8 @@ export class RenderService {
     }
 
     public onResize() {
-        let width = window.innerWidth;
-        let height = window.innerHeight - 90;
+        const width = window.innerWidth;
+        const height = window.innerHeight - 90;
 
         this.camera.aspect = width / height;
         this.camera.updateProjectionMatrix();

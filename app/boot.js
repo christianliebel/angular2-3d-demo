@@ -1,6 +1,6 @@
-System.register(['angular2/platform/browser', './components/modifierComponent', './services/renderService'], function(exports_1) {
-    var browser_1, modifierComponent_1, renderService_1;
-    var APP_PROVIDERS;
+///<reference path="../node_modules/angular2/typings/browser.d.ts" />
+System.register(['angular2/platform/browser', './components/modifierComponent', 'rxjs/Rx'], function(exports_1) {
+    var browser_1, modifierComponent_1;
     return {
         setters:[
             function (browser_1_1) {
@@ -9,12 +9,9 @@ System.register(['angular2/platform/browser', './components/modifierComponent', 
             function (modifierComponent_1_1) {
                 modifierComponent_1 = modifierComponent_1_1;
             },
-            function (renderService_1_1) {
-                renderService_1 = renderService_1_1;
-            }],
+            function (_1) {}],
         execute: function() {
-            APP_PROVIDERS = [renderService_1.RenderService];
-            browser_1.bootstrap(modifierComponent_1.ModifierComponent, [APP_PROVIDERS]);
+            browser_1.bootstrap(modifierComponent_1.ModifierComponent, []);
         }
     }
 });

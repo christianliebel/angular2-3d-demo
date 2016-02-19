@@ -20,21 +20,21 @@ System.register(['angular2/core', '../services/renderService'], function(exports
             }],
         execute: function() {
             ModifierComponent = (function () {
-                function ModifierComponent(renderService) {
-                    this.renderService = renderService;
+                function ModifierComponent(_renderService) {
+                    this._renderService = _renderService;
                     this.scale = 1;
                 }
                 ModifierComponent.prototype.addStars = function (stars) {
-                    this.renderService.addStars(stars);
+                    this._renderService.addStars(stars);
                 };
                 ModifierComponent.prototype.updateScale = function (newScale) {
-                    this.renderService.updateScale(newScale);
+                    this._renderService.updateScale(newScale);
                 };
                 ModifierComponent = __decorate([
                     core_1.Component({
                         selector: 'modifier',
                         template: "\n    <div id=\"modifier\">\n        <h3>Universe Configurator</h3>\n        <label>\n            Scale:\n            <input type=\"number\" [ngModel]=\"scale\" (ngModelChange)=\"updateScale($event)\" min=\"1\" max=\"25\" />\n        </label>\n        <div>\n            Stars:\n            <button (click)=\"addStars(100)\">+100</button>\n            <button (click)=\"addStars(1000)\">+1000</button>\n            <button (click)=\"addStars(10000)\">+10000</button>\n        </div>\n    </div>",
-                        styles: []
+                        providers: [renderService_1.RenderService]
                     }), 
                     __metadata('design:paramtypes', [renderService_1.RenderService])
                 ], ModifierComponent);

@@ -17,19 +17,19 @@ import {RenderService} from '../services/renderService';
             <button (click)="addStars(10000)">+10000</button>
         </div>
     </div>`,
-    styles: []
+    providers: [RenderService]
 })
 export class ModifierComponent {
     public scale: number = 1;
 
-    constructor(public renderService: RenderService) {
+    constructor(private _renderService: RenderService) {
     }
 
     public addStars(stars: number) {
-        this.renderService.addStars(stars);
+        this._renderService.addStars(stars);
     }
 
     public updateScale(newScale: number) {
-        this.renderService.updateScale(newScale);
+        this._renderService.updateScale(newScale);
     }
 }
