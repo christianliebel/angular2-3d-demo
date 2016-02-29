@@ -5,15 +5,10 @@ System.register([], function(exports_1) {
         execute: function() {
             RenderService = (function () {
                 function RenderService() {
-                    var _this = this;
-                    this.init();
-                    this.animate();
-                    window.addEventListener('resize', function (_) { return _this.onResize(); });
                 }
-                RenderService.prototype.init = function () {
+                RenderService.prototype.init = function (container) {
                     var _this = this;
-                    this.stats = new Stats();
-                    document.body.appendChild(this.stats.domElement);
+                    this.addStats();
                     var width = window.innerWidth;
                     var height = window.innerHeight - 90;
                     this.scene = new THREE.Scene();
@@ -23,7 +18,6 @@ System.register([], function(exports_1) {
                     this.renderer.setPixelRatio(window.devicePixelRatio);
                     this.renderer.setSize(width, height);
                     this.renderer.setClearColor(0x000000);
-                    var container = document.getElementById('container');
                     container.appendChild(this.renderer.domElement);
                     this.controls = new THREE.TrackballControls(this.camera, container);
                     // Sphere
@@ -40,6 +34,14 @@ System.register([], function(exports_1) {
                     var pointLight = new THREE.PointLight(0xffffff);
                     pointLight.position.set(300, 0, 300);
                     this.scene.add(pointLight);
+                    // start animation
+                    this.animate();
+                    // bind to window resizes
+                    window.addEventListener('resize', function (_) { return _this.onResize(); });
+                };
+                RenderService.prototype.addStats = function () {
+                    this.stats = new Stats();
+                    document.body.appendChild(this.stats.domElement);
                 };
                 RenderService.prototype.addStars = function (starsCount) {
                     var stars = new THREE.Geometry();

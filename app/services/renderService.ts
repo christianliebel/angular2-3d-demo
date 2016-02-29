@@ -12,17 +12,8 @@ export class RenderService {
     private controls: TrackballControls;
     private sphere: Mesh;
 
-    constructor() {
-        this.init();
-        this.animate();
-
-        window.addEventListener('resize', _ => this.onResize());
-    }
-
-
-    public init() {
-        this.stats = new Stats();
-        document.body.appendChild(this.stats.domElement);
+    public init(container: HTMLElement) {
+        this.addStats();
 
         const width = window.innerWidth;
         const height = window.innerHeight - 90;
@@ -36,7 +27,6 @@ export class RenderService {
         this.renderer.setSize(width, height);
         this.renderer.setClearColor(0x000000);
 
-        const container = document.getElementById('container');
         container.appendChild(this.renderer.domElement);
         this.controls = new THREE.TrackballControls(this.camera, container);
 
@@ -57,6 +47,17 @@ export class RenderService {
         const pointLight = new THREE.PointLight(0xffffff);
         pointLight.position.set(300, 0, 300);
         this.scene.add(pointLight);
+
+        // start animation
+        this.animate();
+
+        // bind to window resizes
+        window.addEventListener('resize', _ => this.onResize());
+    }
+
+    public addStats() {
+        this.stats = new Stats();
+        document.body.appendChild(this.stats.domElement);
     }
 
     public addStars(starsCount: number) {

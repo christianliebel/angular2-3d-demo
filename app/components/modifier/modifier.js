@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../services/renderService'], function(exports_1) {
+System.register(['angular2/core', '../../services/renderService'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -24,16 +24,29 @@ System.register(['angular2/core', '../services/renderService'], function(exports
                     this._renderService = _renderService;
                     this.scale = 1;
                 }
+                Object.defineProperty(ModifierComponent.prototype, "container", {
+                    set: function (value) {
+                        if (value)
+                            this._renderService.init(value);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 ModifierComponent.prototype.addStars = function (stars) {
                     this._renderService.addStars(stars);
                 };
                 ModifierComponent.prototype.updateScale = function (newScale) {
                     this._renderService.updateScale(newScale);
                 };
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', HTMLElement), 
+                    __metadata('design:paramtypes', [HTMLElement])
+                ], ModifierComponent.prototype, "container", null);
                 ModifierComponent = __decorate([
                     core_1.Component({
                         selector: 'modifier',
-                        template: "\n    <div id=\"modifier\">\n        <h3>Universe Configurator</h3>\n        <label>\n            Scale:\n            <input type=\"number\" [ngModel]=\"scale\" (ngModelChange)=\"updateScale($event)\" min=\"1\" max=\"25\" />\n        </label>\n        <div>\n            Stars:\n            <button (click)=\"addStars(100)\">+100</button>\n            <button (click)=\"addStars(1000)\">+1000</button>\n            <button (click)=\"addStars(10000)\">+10000</button>\n        </div>\n    </div>",
+                        templateUrl: 'app/components/modifier/modifier.html',
                         providers: [renderService_1.RenderService]
                     }), 
                     __metadata('design:paramtypes', [renderService_1.RenderService])
@@ -44,4 +57,4 @@ System.register(['angular2/core', '../services/renderService'], function(exports
         }
     }
 });
-//# sourceMappingURL=modifierComponent.js.map
+//# sourceMappingURL=modifier.js.map
