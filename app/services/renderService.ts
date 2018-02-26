@@ -32,6 +32,7 @@ export class RenderService {
 
         // Sphere
         const textureLoader = new THREE.TextureLoader();
+        textureLoader.setCrossOrigin('raw.githubusercontent.com'); // Required for RawGit demo, you can leave this out.
         textureLoader.load('assets/earth.jpg', t => {
             let geometry = new THREE.SphereGeometry(5, 50, 50);
             let material = new THREE.MeshLambertMaterial({map: t});

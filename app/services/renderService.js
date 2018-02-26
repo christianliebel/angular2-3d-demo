@@ -22,6 +22,7 @@ System.register([], function(exports_1) {
                     this.controls = new THREE.TrackballControls(this.camera, container);
                     // Sphere
                     var textureLoader = new THREE.TextureLoader();
+                    textureLoader.setCrossOrigin('raw.githubusercontent.com'); // Required for RawGit demo, you can leave this out.
                     textureLoader.load('assets/earth.jpg', function (t) {
                         var geometry = new THREE.SphereGeometry(5, 50, 50);
                         var material = new THREE.MeshLambertMaterial({ map: t });

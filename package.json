@@ -1,6 +1,6 @@
 {
   "name": "angular2-3d-demo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Small demo showcase for integrating Angular 2 with WebGL 3D",
   "scripts": {
     "tsc": "tsc",
